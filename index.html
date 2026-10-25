@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="bn-BD">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>গ্লোয়িংবিডি | Cem Cot Thai</title>
+<meta name="description" content="বাংলাদেশজুড়ে দ্রুত ডেলিভারিতে Cem Cot Thai অর্ডার করুন। দাম ১,২৫০ টাকা।">
+<style>
+  :root {
+    --bg: #07070d;
+    --panel: rgba(255, 255, 255, 0.05);
+    --line: rgba(255, 255, 255, 0.12);
+    --text: #f4f4f8;
+    --muted: #a3a3b8;
+    --accent: #ff4d8d;
+    --accent-2: #ffb347;
+    --accent-3: #6ee7ff;
+    --glow: 0 0 40px rgba(255, 77, 141, 0.45);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: "Noto Sans Bengali", "Nirmala UI", "Vrinda", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ---------- Animated background ---------- */
+  .bg-orbs {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    animation: float 14s ease-in-out infinite;
+  }
+  .orb.one { width: 420px; height: 420px; background: var(--accent); top: -120px; left: -100px; }
+  .orb.two { width: 380px; height: 380px; background: var(--accent-2); bottom: -120px; right: -80px; animation-delay: -5s; }
+  .orb.three { width: 300px; height: 300px; background: var(--accent-3); top: 40%; left: 55%; animation-delay: -9s; }
+
+  @keyframes float {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(40px, -30px, 0) scale(1.1); }
+  }
+
+  /* ---------- Navbar ---------- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 6%;
+    backdrop-filter: blur(14px);
+    background: rgba(7, 7, 13, 0.6);
+    border-bottom: 1px solid var(--line);
+  }
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: var(--glow);
+  }
+  .nav-btn {
+    padding: 10px 22px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .nav-btn:hover { transform: translateY(-2px); box-shadow: var(--glow); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+    gap: 40px;
+    padding: 120px 6% 60px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    animation: pulse 2.4s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 77, 141, 0.5); }
+    50% { box-shadow: 0 0 0 10px rgba(255, 77, 141, 0); }
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+  .hero h1 span {
+    background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: shine 4s linear infinite;
+  }
+  @keyframes shine {
+    to { background-position: 200% center; }
+  }
+  .hero p.sub {
+    color: var(--muted);
+    font-size: 1.1rem;
+    max-width: 520px;
+    margin-bottom: 28px;
+  }
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .price {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--accent-2);
+    text-shadow: 0 0 25px rgba(255, 179, 71, 0.4);
+  }
+  .old-price {
+    color: var(--muted);
+    text-decoration: line-through;
+  }
+  .cta {
+    display: inline-block;
+    padding: 16px 40px;
+    border-radius: 14px;
+    border: none;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    box-shadow: var(--glow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+  }
+  .cta:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 0 60px rgba(255, 77, 141, 0.7); }
+
+  /* 3D product stage */
+  .stage {
+    perspective: 1200px;
+    height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .product-card {
+    position: relative;
+    width: min(380px, 90%);
+    aspect-ratio: 4 / 5;
+    border-radius: 28px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    backdrop-filter: blur(10px);
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out;
+    animation: levitate 6s ease-in-out infinite;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), var(--glow);
+  }
+  @keyframes levitate {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -18px; }
+  }
+  .product-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 28px;
+    transform: translateZ(40px);
+  }
+  .product-card .fallback {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    color: var(--muted);
+  }
+  .product-card.no-img .fallback { display: flex; }
+  .product-card.no-img img { display: none; }
+
+  .ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px dashed rgba(255, 77, 141, 0.4);
+    transform-style: preserve-3d;
+    animation: spin 14s linear infinite;
+  }
+  .ring.r1 { width: 110%; height: 110%; transform: rotateX(70deg); }
+  .ring.r2 { width: 130%; height: 130%; transform: rotateX(70deg) rotateZ(40deg); animation-duration: 22s; border-color: rgba(110, 231, 255, 0.35); }
+  @keyframes spin {
+    to { transform: rotateX(70deg) rotateZ(360deg); }
+  }
+
+  .badge-3d {
+    position: absolute;
+    top: 8%;
+    right: -4%;
+    padding: 14px 18px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    font-weight: 800;
+    transform: translateZ(90px);
+    box-shadow: var(--glow);
+    animation: bob 3s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%, 100% { margin-top: 0; }
+    50% { margin-top: -12px; }
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding: 90px 6%; }
+  .section-title {
+    text-align: center;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    margin-bottom: 14px;
+  }
+  .section-sub {
+    text-align: center;
+    color: var(--muted);
+    margin-bottom: 50px;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* Gallery */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .gallery-item {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    aspect-ratio: 1 / 1;
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.08); }
+  .gallery-item .fallback {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+  }
+  .gallery-item.no-img .fallback { display: flex; }
+  .gallery-item.no-img img { display: none; }
+
+  /* Video */
+  .video-wrap {
+    max-width: 380px;
+    margin: 0 auto;
+    aspect-ratio: 9 / 16;
+    border-radius: 26px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    box-shadow: var(--glow);
+    transform: perspective(900px) rotateY(-6deg);
+    transition: transform 0.5s ease;
+  }
+  .video-wrap:hover { transform: perspective(900px) rotateY(0deg) scale(1.02); }
+  .video-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #000;
+  }
+
+  /* Features */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .feature {
+    padding: 32px 26px;
+    border-radius: 22px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    transform-style: preserve-3d;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    text-align: center;
+  }
+  .feature:hover {
+    transform: translateY(-10px) rotateX(6deg);
+    box-shadow: var(--glow);
+  }
+  .feature .icon {
+    font-size: 2.4rem;
+    margin-bottom: 14px;
+    display: inline-block;
+    animation: spin-slow 8s linear infinite;
+  }
+  @keyframes spin-slow {
+    0%, 100% { transform: rotateY(0deg); }
+    50% { transform: rotateY(180deg); }
+  }
+  .feature h3 { margin-bottom: 8px; }
+  .feature p { color: var(--muted); font-size: 0.95rem; }
+
+  /* Order form */
+  .order-wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 40px 34px;
+    border-radius: 28px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  }
+  .order-wrap h2 { text-align: center; margin-bottom: 6px; font-size: 1.9rem; }
+  .order-wrap .hint { text-align: center; color: var(--muted); margin-bottom: 26px; font-size: 0.95rem; }
+  .order-status { min-height: 1.5em; margin: -14px 0 14px; text-align: center; color: #8ef0a5; }
+  .order-status.error { color: #ff6b6b; }
+
+  .field { margin-bottom: 18px; }
+  .field label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    padding: 13px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text);
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .field select option { background: #15151f; color: var(--text); }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(255, 77, 141, 0.2);
+  }
+  .field textarea { resize: vertical; min-height: 80px; }
+  .field .error {
+    color: #ff6b6b;
+    font-size: 0.82rem;
+    margin-top: 4px;
+    display: none;
+  }
+  .field.invalid .error { display: block; }
+  .field.invalid input,
+  .field.invalid select,
+  .field.invalid textarea { border-color: #ff6b6b; }
+
+  .row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .summary {
+    margin: 24px 0;
+    padding: 18px 20px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px dashed var(--line);
+  }
+  .summary div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    color: var(--muted);
+  }
+  .summary .total {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+    color: var(--text);
+    font-weight: 800;
+    font-size: 1.15rem;
+  }
+  .summary .total span:last-child {
+    color: var(--accent-2);
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 17px;
+    font-size: 1.1rem;
+  }
+
+  /* Confirmation overlay */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(7, 7, 13, 0.9);
+    backdrop-filter: blur(8px);
+    perspective: 1000px;
+  }
+  .overlay.show { display: flex; }
+  .overlay-card {
+    text-align: center;
+    transform-style: preserve-3d;
+    animation: cardIn 0.9s cubic-bezier(.2, .9, .3, 1.3) both;
+  }
+  @keyframes cardIn {
+    from { transform: rotateY(-90deg) scale(0.6); opacity: 0; }
+    to { transform: rotateY(0) scale(1); opacity: 1; }
+  }
+  .check {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.4rem;
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: var(--glow);
+    animation: popSpin 1s ease-out both;
+  }
+  @keyframes popSpin {
+    0% { transform: rotateY(0) scale(0); }
+    70% { transform: rotateY(360deg) scale(1.2); }
+    100% { transform: rotateY(360deg) scale(1); }
+  }
+  .overlay-card h3 { font-size: 1.6rem; margin-bottom: 8px; }
+  .overlay-card p { color: var(--muted); }
+  .loader-bar {
+    width: 240px;
+    height: 6px;
+    margin: 22px auto 0;
+    border-radius: 6px;
+    background: var(--line);
+    overflow: hidden;
+  }
+  .loader-bar span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent), var(--accent-3));
+    transition: width 1.8s ease;
+  }
+  .confetti {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 14px;
+    z-index: 201;
+    pointer-events: none;
+    animation: fall linear forwards;
+  }
+  @keyframes fall {
+    to { transform: translateY(110vh) rotate(720deg); }
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 36px 6%;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; text-align: center; padding-top: 110px; }
+    .hero p.sub { margin-left: auto; margin-right: auto; }
+    .price-row { justify-content: center; }
+    .stage { height: 420px; }
+    .gallery { grid-template-columns: 1fr; }
+    .row-2 { grid-template-columns: 1fr; }
+    .order-wrap { padding: 28px 20px; }
+    .badge-3d { right: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-orbs">
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+</div>
+
+<nav>
+  <div class="logo">GlowingBD</div>
+  <a href="#order" class="nav-btn">অর্ডার করুন</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div>
+    <span class="badge">সীমিত সংখ্যক পণ্য মজুত আছে</span>
+    <h1>পরিচিত হোন <span>Cem Cot Thai</span></h1>
+    <p class="sub">প্রথম ব্যবহার থেকেই অনুভব করুন প্রিমিয়াম মান। বাংলাদেশের গ্রাহকদের আস্থায়, দ্রুত পৌঁছে যাবে আপনার ঠিকানায়।</p>
+    <div class="price-row">
+      <div class="price">১,২৫০ টাকা</div>
+    </div>
+    <a href="#order" class="cta">অর্ডার করুন</a>
+  </div>
+
+  <div class="stage" id="stage">
+    <div class="ring r1"></div>
+    <div class="ring r2"></div>
+    <div class="product-card" id="productCard">
+      <img id="heroImg"
+           src="photo-1.png"
+           alt="Cem Cot Thai পণ্যের ছবি"
+           onerror="this.closest('.product-card').classList.add('no-img')">
+      <div class="fallback">পণ্যের ছবি এখানে দেখা যাবে</div>
+    </div>
+    <div class="badge-3d">মাত্র ১,২৫০ টাকা</div>
+  </div>
+</header>
+
+<!-- GALLERY -->
+<section>
+  <h2 class="section-title reveal">পণ্যের ছবি</h2>
+  <p class="section-sub reveal">Cem Cot Thai আরও কাছ থেকে দেখুন</p>
+  <div class="gallery">
+    <div class="gallery-item reveal">
+      <img src="photo-1.png"
+           alt="Cem Cot Thai-এর ছবি ১"
+           onerror="this.parentElement.classList.add('no-img')">
+         <div class="fallback">ছবি ১</div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="photo-2.png"
+           alt="Cem Cot Thai-এর ছবি ২"
+           onerror="this.parentElement.classList.add('no-img')">
+         <div class="fallback">ছবি ২</div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section>
+  <h2 class="section-title reveal">ব্যবহারে দেখুন</h2>
+  <p class="section-sub reveal">পণ্যটি ব্যবহারের দৃশ্য</p>
+  <div class="video-wrap reveal">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/wAWpvcuogTY?autoplay=1&amp;mute=1&amp;playsinline=1&amp;controls=1&amp;loop=1&amp;playlist=wAWpvcuogTY&amp;rel=0"
+      title="Cem Cot Thai পণ্যের ভিডিও"
+      allow="autoplay; encrypted-media; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen></iframe>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+  <h2 class="section-title reveal">কেন বেছে নেবেন Cem Cot Thai?</h2>
+  <p class="section-sub reveal">যারা সত্যিকারের ফল চান, তাদের জন্য</p>
+  <div class="features">
+    <div class="feature reveal">
+      <div class="icon">✨</div>
+      <h3>প্রিমিয়াম মান</h3>
+      <p>যত্নসহকারে তৈরি ও পরীক্ষিত, প্রতিদিন নির্ভরতার সঙ্গে ব্যবহার করুন।</p>
+    </div>
+    <div class="feature reveal">
+      <div class="icon">🚚</div>
+      <h3>দ্রুত ডেলিভারি</h3>
+      <p>ঢাকার ভেতরে এবং বাংলাদেশের অন্যান্য স্থানে দ্রুত ডেলিভারি।</p>
+    </div>
+    <div class="feature reveal">
+      <div class="icon">💰</div>
+      <h3>ন্যায্য দাম</h3>
+      <p>কোনো লুকানো খরচ নেই। পণ্যের দাম ১,২৫০ টাকা; ডেলিভারি চার্জ আলাদা।</p>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER FORM -->
+<section id="order">
+  <div class="order-wrap reveal">
+    <h2>অর্ডার করুন</h2>
+    <p class="hint">নিচে আপনার তথ্য দিয়ে অর্ডার নিশ্চিত করুন।</p>
+    <p class="order-status" id="orderStatus" role="status" aria-live="polite"></p>
+
+    <form id="orderForm" novalidate>
+      <div class="row-2">
+        <div class="field" id="f-name">
+          <label for="name">আপনার নাম</label>
+          <input type="text" id="name" placeholder="সম্পূর্ণ নাম লিখুন" autocomplete="name">
+          <div class="error">অনুগ্রহ করে আপনার নাম লিখুন।</div>
+        </div>
+        <div class="field" id="f-phone">
+          <label for="phone">মোবাইল নম্বর</label>
+          <input type="tel" id="phone" placeholder="০১XXXXXXXXX" autocomplete="tel">
+          <div class="error">সঠিক মোবাইল নম্বর লিখুন।</div>
+        </div>
+      </div>
+
+      <div class="field" id="f-address">
+        <label for="address">সম্পূর্ণ ঠিকানা</label>
+        <textarea id="address" placeholder="বাসা, সড়ক, এলাকা, জেলা"></textarea>
+        <div class="error">আপনার ডেলিভারির ঠিকানা লিখুন।</div>
+      </div>
+
+      <div class="row-2">
+        <div class="field" id="f-area">
+          <label for="area">ডেলিভারির এলাকা</label>
+          <select id="area">
+            <option value="inside">ঢাকার ভেতরে (৭০ টাকা)</option>
+            <option value="outside">ঢাকার বাইরে (১২০ টাকা)</option>
+          </select>
+        </div>
+        <div class="field" id="f-qty">
+          <label for="qty">পরিমাণ</label>
+          <select id="qty">
+            <option value="1">১</option>
+            <option value="2">২</option>
+            <option value="3">৩</option>
+            <option value="4">৪</option>
+            <option value="5">৫</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="summary">
+        <div><span>পণ্যের দাম</span><span id="sumPrice">১,২৫০ টাকা</span></div>
+        <div><span>পরিমাণ</span><span id="sumQty">১</span></div>
+        <div><span>ডেলিভারি চার্জ</span><span id="sumDelivery">৭০ টাকা</span></div>
+        <div class="total"><span>সর্বমোট</span><span id="sumTotal">১,৩২০ টাকা</span></div>
+      </div>
+
+      <button type="submit" class="cta submit-btn">অর্ডার নিশ্চিত করুন</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; <span id="year"></span> GlowingBD। সর্বস্বত্ব সংরক্ষিত।</p>
+</footer>
+
+<!-- Confirmation overlay -->
+<div class="overlay" id="overlay">
+  <div class="overlay-card">
+    <div class="check">✓</div>
+    <h3>অর্ডার প্রস্তুত!</h3>
+    <p id="overlayText">আপনার অর্ডার পাঠানো হচ্ছে...</p>
+    <div class="loader-bar"><span id="loaderFill"></span></div>
+  </div>
+</div>
+
+<script>
+  // Settings
+  const PRICE = 1250;
+  const DELIVERY = { inside: 70, outside: 120 };
+  const PRODUCT_NAME = "Cem Cot Thai";
+
+  // Footer year
+  document.getElementById("year").textContent = new Intl.NumberFormat("bn-BD").format(new Date().getFullYear());
+
+  // 3D tilt on hero card
+  const stage = document.getElementById("stage");
+  const card = document.getElementById("productCard");
+  stage.addEventListener("mousemove", (e) => {
+    const r = stage.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    card.style.transform = `rotateY(${x * 25}deg) rotateX(${-y * 25}deg)`;
+  });
+  stage.addEventListener("mouseleave", () => {
+    card.style.transform = "rotateY(0deg) rotateX(0deg)";
+  });
+
+  // Tilt on gallery items
+  document.querySelectorAll(".gallery-item").forEach((item) => {
+    item.addEventListener("mousemove", (e) => {
+      const r = item.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      item.style.transform = `perspective(800px) rotateY(${x * 14}deg) rotateX(${-y * 14}deg)`;
+    });
+    item.addEventListener("mouseleave", () => {
+      item.style.transform = "";
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+  // Price calculator
+  const areaEl = document.getElementById("area");
+  const qtyEl = document.getElementById("qty");
+  const fmt = (n) => `${n.toLocaleString("bn-BD")} টাকা`;
+
+  function updateSummary() {
+    const qty = parseInt(qtyEl.value, 10);
+    const delivery = DELIVERY[areaEl.value];
+    const subtotal = PRICE * qty;
+    document.getElementById("sumPrice").textContent = fmt(PRICE);
+    document.getElementById("sumQty").textContent = qty.toLocaleString("bn-BD");
+    document.getElementById("sumDelivery").textContent = fmt(delivery);
+    document.getElementById("sumTotal").textContent = fmt(subtotal + delivery);
+    return { qty, delivery, subtotal, total: subtotal + delivery };
+  }
+  areaEl.addEventListener("change", updateSummary);
+  qtyEl.addEventListener("change", updateSummary);
+  updateSummary();
+
+  // Validation helpers
+  function setInvalid(id, invalid) {
+    document.getElementById(id).classList.toggle("invalid", invalid);
+  }
+
+  function toEnglishDigits(value) {
+    return value.replace(/[০-৯]/g, (digit) => String("০১২৩৪৫৬৭৮৯".indexOf(digit)));
+  }
+
+  function validate() {
+    const name = document.getElementById("name").value.trim();
+    const phone = toEnglishDigits(document.getElementById("phone").value).replace(/[\s-]/g, "");
+    const address = document.getElementById("address").value.trim();
+
+    const nameOk = name.length >= 2;
+    const phoneOk = /^(\+?880)?01[3-9]\d{8}$/.test(phone);
+    const addressOk = address.length >= 5;
+
+    setInvalid("f-name", !nameOk);
+    setInvalid("f-phone", !phoneOk);
+    setInvalid("f-address", !addressOk);
+
+    return nameOk && phoneOk && addressOk;
+  }
+
+  // Form submit
+  const form = document.getElementById("orderForm");
+  const overlay = document.getElementById("overlay");
+  const overlayText = document.getElementById("overlayText");
+  const loaderFill = document.getElementById("loaderFill");
+  const orderStatus = document.getElementById("orderStatus");
+  const submitButton = form.querySelector('button[type="submit"]');
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (submitButton.disabled || !validate()) return;
+
+    const data = {
+      name: document.getElementById("name").value.trim(),
+      phone: toEnglishDigits(document.getElementById("phone").value.trim()),
+      address: document.getElementById("address").value.trim(),
+      area: areaEl.value,
+      qty: Number(qtyEl.value),
+    };
+    submitButton.disabled = true;
+    orderStatus.classList.remove("error");
+    orderStatus.textContent = "অর্ডার পাঠানো হচ্ছে...";
+
+    try {
+      const response = await fetch("/api/order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Order submission failed");
+      }
+
+      orderStatus.textContent = "";
+      overlayText.textContent = "আপনার অর্ডার সফলভাবে পাঠানো হয়েছে। ধন্যবাদ!";
+      showCelebration();
+
+      setTimeout(() => {
+        overlay.classList.remove("show");
+        document.querySelectorAll(".confetti").forEach((c) => c.remove());
+        loaderFill.style.width = "0";
+        overlayText.textContent = "আপনার অর্ডার পাঠানো হচ্ছে...";
+        form.reset();
+        areaEl.value = "inside";
+        qtyEl.value = "1";
+        updateSummary();
+      }, 4500);
+    } catch (error) {
+      console.error("Order submission failed", error);
+      orderStatus.classList.add("error");
+      orderStatus.textContent = "অর্ডার পাঠানো যায়নি। অনুগ্রহ করে আবার চেষ্টা করুন।";
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+
+  // Celebration animation: overlay + confetti
+  function showCelebration() {
+    overlay.classList.add("show");
+    requestAnimationFrame(() => { loaderFill.style.width = "100%"; });
+
+    const colors = ["#ff4d8d", "#ffb347", "#6ee7ff", "#ffffff", "#b388ff"];
+    for (let i = 0; i < 90; i++) {
+      const piece = document.createElement("div");
+      piece.className = "confetti";
+      piece.style.left = Math.random() * 100 + "vw";
+      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.animationDuration = 2 + Math.random() * 2.5 + "s";
+      piece.style.animationDelay = Math.random() * 0.8 + "s";
+      piece.style.transform = `rotate(${Math.random() * 360}deg)`;
+      document.body.appendChild(piece);
+      setTimeout(() => piece.remove(), 5000);
+    }
+  }
+</script>
+
+</body>
+</html>
