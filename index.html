@@ -169,13 +169,13 @@
 
   /* 3D product stage */
   .stage {
+    position: relative;
     perspective: 1200px;
     height: clamp(360px, 42vw, 520px);
     min-width: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: clip;
   }
   .product-card {
     position: relative;
@@ -230,7 +230,7 @@
   .badge-3d {
     position: absolute;
     top: 8%;
-    right: -4%;
+    right: 6%;
     padding: 14px 18px;
     border-radius: 16px;
     background: linear-gradient(135deg, var(--accent), var(--accent-2));
@@ -543,7 +543,6 @@
     .price-row { justify-content: center; }
     .stage { height: clamp(360px, 52vw, 440px); }
     .order-wrap { padding: 28px 20px; }
-    .badge-3d { right: 0; }
   }
 
   @media (max-width: 600px) {
